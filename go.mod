@@ -100,7 +100,7 @@ require (
 	github.com/coder/pretty v0.0.0-20230908205945-e89ba86370e0
 	github.com/coder/quartz v0.3.0
 	github.com/coder/retry v1.5.1
-	github.com/coder/serpent v0.12.0
+	github.com/coder/serpent v0.13.0
 	github.com/coder/terraform-provider-coder/v2 v2.13.1
 	github.com/coder/websocket v1.8.13
 	github.com/coder/wgtunnel v0.1.13-0.20240522110300-ade90dfb2da0
@@ -490,6 +490,7 @@ require (
 )
 
 require (
+	cdr.dev/slog/v3 v3.0.0-rc1 // indirect
 	cel.dev/expr v0.24.0 // indirect
 	cloud.google.com/go v0.121.4 // indirect
 	cloud.google.com/go/iam v1.5.2 // indirect
