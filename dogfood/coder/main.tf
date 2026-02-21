@@ -342,14 +342,14 @@ module "slackme" {
 module "dotfiles" {
   count    = data.coder_workspace.me.start_count
   source   = "dev.registry.coder.com/coder/dotfiles/coder"
-  version  = "1.2.3"
+  version  = "1.3.0"
   agent_id = coder_agent.dev.id
 }
 
 module "git-config" {
   count    = data.coder_workspace.me.start_count
   source   = "dev.registry.coder.com/coder/git-config/coder"
-  version  = "1.0.32"
+  version  = "1.0.33"
   agent_id = coder_agent.dev.id
   # If you prefer to commit with a different email, this allows you to do so.
   allow_email_change = true
@@ -358,7 +358,7 @@ module "git-config" {
 module "git-clone" {
   count    = data.coder_workspace.me.start_count
   source   = "dev.registry.coder.com/coder/git-clone/coder"
-  version  = "1.2.2"
+  version  = "1.2.3"
   agent_id = coder_agent.dev.id
   url      = "https://github.com/coder/coder"
   base_dir = local.repo_base_dir
@@ -374,7 +374,7 @@ module "personalize" {
 module "mux" {
   count     = data.coder_workspace.me.start_count
   source    = "registry.coder.com/coder/mux/coder"
-  version   = "1.0.5"
+  version   = "1.1.0"
   agent_id  = coder_agent.dev.id
   subdomain = true
 }
@@ -382,7 +382,7 @@ module "mux" {
 module "code-server" {
   count                   = contains(jsondecode(data.coder_parameter.ide_choices.value), "code-server") ? data.coder_workspace.me.start_count : 0
   source                  = "dev.registry.coder.com/coder/code-server/coder"
-  version                 = "1.4.1"
+  version                 = "1.4.2"
   agent_id                = coder_agent.dev.id
   folder                  = local.repo_dir
   auto_install_extensions = true
@@ -404,7 +404,7 @@ module "vscode-web" {
 module "jetbrains" {
   count         = contains(jsondecode(data.coder_parameter.ide_choices.value), "jetbrains") ? data.coder_workspace.me.start_count : 0
   source        = "dev.registry.coder.com/coder/jetbrains/coder"
-  version       = "1.2.1"
+  version       = "1.3.0"
   agent_id      = coder_agent.dev.id
   agent_name    = "dev"
   folder        = local.repo_dir
@@ -415,7 +415,7 @@ module "jetbrains" {
 module "filebrowser" {
   count      = data.coder_workspace.me.start_count
   source     = "dev.registry.coder.com/coder/filebrowser/coder"
-  version    = "1.1.3"
+  version    = "1.1.4"
   agent_id   = coder_agent.dev.id
   agent_name = "dev"
 }
@@ -446,7 +446,7 @@ module "windsurf" {
 module "zed" {
   count      = contains(jsondecode(data.coder_parameter.ide_choices.value), "zed") ? data.coder_workspace.me.start_count : 0
   source     = "dev.registry.coder.com/coder/zed/coder"
-  version    = "1.1.3"
+  version    = "1.1.4"
   agent_id   = coder_agent.dev.id
   agent_name = "dev"
   folder     = local.repo_dir
@@ -455,7 +455,7 @@ module "zed" {
 module "jetbrains-fleet" {
   count      = contains(jsondecode(data.coder_parameter.ide_choices.value), "fleet") ? data.coder_workspace.me.start_count : 0
   source     = "registry.coder.com/coder/jetbrains-fleet/coder"
-  version    = "1.0.2"
+  version    = "1.0.3"
   agent_id   = coder_agent.dev.id
   agent_name = "dev"
   folder     = local.repo_dir
@@ -871,7 +871,7 @@ resource "coder_script" "boundary_config_setup" {
 module "claude-code" {
   count               = data.coder_task.me.enabled ? data.coder_workspace.me.start_count : 0
   source              = "dev.registry.coder.com/coder/claude-code/coder"
-  version             = "4.2.6"
+  version             = "4.7.5"
   enable_boundary     = true
   boundary_version    = "v0.2.1"
   agent_id            = coder_agent.dev.id
