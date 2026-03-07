@@ -460,7 +460,7 @@ require (
 	sigs.k8s.io/yaml v1.5.0 // indirect
 )
 
-require github.com/coder/clistat v1.1.2
+require github.com/coder/clistat v1.2.1
 
 require github.com/SherClockHolmes/webpush-go v1.4.0
 
@@ -490,6 +490,7 @@ require (
 )
 
 require (
+	cdr.dev/slog/v3 v3.0.0-rc1 // indirect
 	cel.dev/expr v0.24.0 // indirect
 	cloud.google.com/go v0.121.4 // indirect
 	cloud.google.com/go/iam v1.5.2 // indirect
