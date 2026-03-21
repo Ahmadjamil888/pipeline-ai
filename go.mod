@@ -101,7 +101,7 @@ require (
 	github.com/coder/quartz v0.3.0
 	github.com/coder/retry v1.5.1
 	github.com/coder/serpent v0.12.0
-	github.com/coder/terraform-provider-coder/v2 v2.13.1
+	github.com/coder/terraform-provider-coder/v2 v2.15.0
 	github.com/coder/websocket v1.8.13
 	github.com/coder/wgtunnel v0.1.13-0.20240522110300-ade90dfb2da0
 	github.com/coreos/go-oidc/v3 v3.17.0
@@ -195,16 +195,16 @@ require (
 	go.uber.org/goleak v1.3.1-0.20240429205332-517bace7cc29
 	go.uber.org/mock v0.6.0
 	go4.org/netipx v0.0.0-20230728180743-ad4cb58a6516
-	golang.org/x/crypto v0.46.0
+	golang.org/x/crypto v0.47.0
 	golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
-	golang.org/x/mod v0.31.0
-	golang.org/x/net v0.48.0
+	golang.org/x/mod v0.33.0
+	golang.org/x/net v0.49.0
 	golang.org/x/oauth2 v0.34.0
 	golang.org/x/sync v0.19.0
-	golang.org/x/sys v0.39.0
-	golang.org/x/term v0.38.0
-	golang.org/x/text v0.32.0
-	golang.org/x/tools v0.40.0
+	golang.org/x/sys v0.40.0
+	golang.org/x/term v0.39.0
+	golang.org/x/text v0.33.0
+	golang.org/x/tools v0.41.0
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
 	google.golang.org/api v0.257.0
 	google.golang.org/grpc v1.77.0
@@ -339,7 +339,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
-	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
+	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1 // indirect
 	github.com/hdevalence/ed25519consensus v0.1.0 // indirect
 	github.com/illarion/gonotify v1.0.1 // indirect
