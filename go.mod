@@ -1,6 +1,6 @@
 module github.com/coder/coder/v2
 
-go 1.24.10
+go 1.25.0
 
 // Required until a v3 of chroma is created to lazily initialize all XML files.
 // None of our dependencies seem to use the registries anyways, so this
@@ -113,7 +113,7 @@ require (
 	github.com/elastic/go-sysinfo v1.15.1
 	github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21
 	github.com/emersion/go-smtp v0.21.2
-	github.com/fatih/color v1.18.0
+	github.com/fatih/color v1.19.0
 	github.com/fatih/structs v1.1.0
 	github.com/fatih/structtag v1.2.0
 	github.com/fergusstrange/embedded-postgres v1.32.0
@@ -201,7 +201,7 @@ require (
 	golang.org/x/net v0.48.0
 	golang.org/x/oauth2 v0.34.0
 	golang.org/x/sync v0.19.0
-	golang.org/x/sys v0.39.0
+	golang.org/x/sys v0.42.0
 	golang.org/x/term v0.38.0
 	golang.org/x/text v0.32.0
 	golang.org/x/tools v0.40.0
