@@ -1,6 +1,6 @@
 module github.com/coder/coder/v2
 
-go 1.24.10
+go 1.26.0
 
 // Required until a v3 of chroma is created to lazily initialize all XML files.
 // None of our dependencies seem to use the registries anyways, so this
@@ -107,7 +107,7 @@ require (
 	github.com/coreos/go-oidc/v3 v3.17.0
 	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf
 	github.com/creack/pty v1.1.21
-	github.com/dave/dst v0.27.2
+	github.com/dave/dst v0.28.0
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/dblohm7/wingoes v0.0.0-20240820181039-f2b84150679e
 	github.com/elastic/go-sysinfo v1.15.1
@@ -195,16 +195,16 @@ require (
 	go.uber.org/goleak v1.3.1-0.20240429205332-517bace7cc29
 	go.uber.org/mock v0.6.0
 	go4.org/netipx v0.0.0-20230728180743-ad4cb58a6516
-	golang.org/x/crypto v0.46.0
+	golang.org/x/crypto v0.57.0
 	golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
-	golang.org/x/mod v0.31.0
-	golang.org/x/net v0.48.0
+	golang.org/x/mod v0.41.0
+	golang.org/x/net v0.59.0
 	golang.org/x/oauth2 v0.34.0
-	golang.org/x/sync v0.19.0
-	golang.org/x/sys v0.39.0
-	golang.org/x/term v0.38.0
-	golang.org/x/text v0.32.0
-	golang.org/x/tools v0.40.0
+	golang.org/x/sync v0.23.0
+	golang.org/x/sys v0.48.0
+	golang.org/x/term v0.46.0
+	golang.org/x/text v0.42.0
+	golang.org/x/tools v0.50.0
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
 	google.golang.org/api v0.257.0
 	google.golang.org/grpc v1.77.0
