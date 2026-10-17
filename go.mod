@@ -1,6 +1,6 @@
 module github.com/coder/coder/v2
 
-go 1.24.10
+go 1.26.0
 
 // Required until a v3 of chroma is created to lazily initialize all XML files.
 // None of our dependencies seem to use the registries anyways, so this
@@ -74,7 +74,7 @@ replace github.com/spf13/afero => github.com/aslilac/afero v0.0.0-20250403163713
 
 require (
 	cdr.dev/slog v1.6.2-0.20251120224544-40ff19937ff2
-	cloud.google.com/go/compute/metadata v0.9.0
+	cloud.google.com/go/compute/metadata v0.10.0
 	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
 	github.com/adrg/xdg v0.5.0
 	github.com/ammario/tlru v0.4.0
@@ -201,7 +201,7 @@ require (
 	golang.org/x/net v0.48.0
 	golang.org/x/oauth2 v0.34.0
 	golang.org/x/sync v0.19.0
-	golang.org/x/sys v0.39.0
+	golang.org/x/sys v0.46.0
 	golang.org/x/term v0.38.0
 	golang.org/x/text v0.32.0
 	golang.org/x/tools v0.40.0
