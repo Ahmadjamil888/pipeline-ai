@@ -1039,6 +1039,13 @@ test:
 	$(GIT_FLAGS) gotestsum --format standard-quiet $(GOTESTSUM_RETRY_FLAGS) --packages="$(TEST_PACKAGES)" -- $(GOTEST_FLAGS)
 .PHONY: test
 
+# test-unit runs the subset of tests that don't require a database or
+# other external services. This is the standard `go test -short ./...`
+# equivalent and is suitable for a fresh clone without infrastructure.
+test-unit:
+	$(GIT_FLAGS) go test -short -count=1 -timeout=10m ./...
+.PHONY: test-unit
+
 test-cli:
 	$(MAKE) test TEST_PACKAGES="./cli..."
 .PHONY: test-cli
