@@ -1571,9 +1571,10 @@ jobs:
       FLY_SAO_PAULO_CODER_PROXY_SESSION_TOKEN: ${{ secrets.FLY_SAO_PAULO_CODER_PROXY_SESSION_TOKEN }}
       FLY_JNB_CODER_PROXY_SESSION_TOKEN: ${{ secrets.FLY_JNB_CODER_PROXY_SESSION_TOKEN }}
 
-  # sqlc-vet runs a postgres docker container, runs Coder migrations, and then
-  # runs sqlc-vet to ensure all queries are valid. This catches any mistakes
-  # in migrations or sqlc queries that makes a query unable to be prepared.
+  # sqlc-vet runs a postgres docker container, runs Coder migrations,
+  # and validates all SQL queries against the live schema. This acts as
+  # a data-quality gate: no SQL query can be merged if it fails schema
+  # validation or cannot be prepared by PostgreSQL.
   sqlc-vet:
     runs-on: ${{ github.repository_owner == 'coder' && 'depot-ubuntu-22.04-8' || 'ubuntu-latest' }}
     needs: changes

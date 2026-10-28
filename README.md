@@ -128,6 +128,58 @@ We are always happy to see new contributors to Coder. If you are new to the Code
 [a guide on how to get started](https://coder.com/docs/CONTRIBUTING). We'd love to see your
 contributions!
 
+## Development
+
+### Prerequisites
+
+- [Go 1.21+](https://go.dev/dl/)
+- [Node.js 20+](https://nodejs.org/) and [pnpm](https://pnpm.io/installation)
+- [Terraform](https://developer.hashicorp.com/terraform/install)
+- [Docker](https://docs.docker.com/get-docker/) (for running a local PostgreSQL instance)
+
+### Install dependencies
+
+```shell
+# Clone the repository
+git clone https://github.com/coder/coder.git
+cd coder
+
+# Install Go dependencies (go.sum lockfile ensures reproducibility)
+go mod download
+
+# Install Node dependencies (pnpm-lock.yaml lockfile ensures reproducibility)
+pnpm install
+```
+
+### Build
+
+```shell
+# Build the Coder binary for your current OS/arch
+make build
+```
+
+### Test
+
+```shell
+# Run unit tests (no database or external services required)
+make test-unit
+# equivalent: go test -short -count=1 -timeout=10m ./...
+
+# Run the full test suite (requires PostgreSQL)
+make test-postgres
+
+# Run a single test by name
+make test RUN=TestMyTest
+```
+
+All lockfiles are committed to the repository to ensure reproducible installs:
+
+- `go.sum` — Go module checksums
+- `pnpm-lock.yaml` — Node.js dependency lockfile (root, `site/`, `offlinedocs/`, `scripts/apidocgen/`)
+- `flake.lock` — Nix flake lockfile
+
+See [CONTRIBUTING](https://coder.com/docs/CONTRIBUTING) for the full development workflow including database migrations, code generation, and linting.
+
 ## Hiring
 
 Apply [here](https://jobs.ashbyhq.com/coder?utm_source=github&utm_medium=readme&utm_campaign=unknown) if you're interested in joining our team.

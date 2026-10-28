@@ -176,3 +176,34 @@ jobs:
             -H "Content-Type: application/json" \
             --data "{\"content\": \"$msg\"}" \
             "${{ secrets.SLACK_SECURITY_FAILURE_WEBHOOK_URL }}"
+
+  tfsec:
+    permissions:
+      security-events: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      # Scan all Terraform files in the repository, including workspace
+      # templates under examples/ and dogfood infrastructure. Results are
+      # uploaded to the GitHub Security tab as SARIF.
+      - name: Run tfsec
+        uses: aquasecurity/tfsec-sarif-action@21ded20e8ca120cd9d3d6ab04ef746477542a608 # v0.1.4
+        with:
+          sarif_file: tfsec-results.sarif
+        continue-on-error: true
+
+      - name: Upload tfsec results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@fe4161a26a8629af62121b670040955b330f9af2 # v3.29.5
+        with:
+          sarif_file: tfsec-results.sarif
+          category: "tfsec"
