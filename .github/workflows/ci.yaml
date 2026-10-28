@@ -340,6 +340,36 @@ jobs:
       - name: Check for unstaged files
         run: ./scripts/check_unstaged.sh
 
+  test-go-unit:
+    runs-on: ${{ github.repository_owner == 'coder' && 'depot-ubuntu-22.04-8' || 'ubuntu-latest' }}
+    needs: changes
+    if: needs.changes.outputs.go == 'true' || needs.changes.outputs.ci == 'true' || github.ref == 'refs/heads/main'
+    timeout-minutes: 20
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Setup Go
+        uses: ./.github/actions/setup-go
+
+      - name: Setup Terraform
+        uses: ./.github/actions/setup-tf
+
+      # Run unit tests with -short to skip any test that requires a
+      # database or other external services. This job validates that
+      # the test suite works from a fresh clone without infrastructure
+      # dependencies, satisfying standard `go test ./...` conventions.
+      - name: Run unit tests
+        run: go test -short -count=1 -timeout=10m ./...
+
   test-go-pg:
     # make sure to adjust NUM_PARALLEL_PACKAGES and NUM_PARALLEL_TESTS below
     # when changing runner sizes
@@ -963,6 +993,7 @@ jobs:
       - fmt
       - lint
       - gen
+      - test-go-unit
       - test-go-pg
       - test-go-pg-17
       - test-go-race-pg
@@ -987,6 +1018,7 @@ jobs:
           echo "- fmt: ${{ needs.fmt.result }}"
           echo "- lint: ${{ needs.lint.result }}"
           echo "- gen: ${{ needs.gen.result }}"
+          echo "- test-go-unit: ${{ needs.test-go-unit.result }}"
           echo "- test-go-pg: ${{ needs.test-go-pg.result }}"
           echo "- test-go-pg-17: ${{ needs.test-go-pg-17.result }}"
           echo "- test-go-race-pg: ${{ needs.test-go-race-pg.result }}"
